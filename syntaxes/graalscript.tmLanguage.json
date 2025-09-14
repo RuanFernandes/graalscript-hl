@@ -1,0 +1,122 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "graalscript",
+    "scopeName": "source.graalscript",
+    "patterns": [
+        { "include": "#sql-strings" },
+        { "include": "#comments" },
+        { "include": "#strings" },
+        { "include": "#numbers" },
+        { "include": "#keywords" },
+        { "include": "#functions" },
+        { "include": "#operators" }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.double-slash.graalscript",
+                    "match": "//.*$"
+                },
+                {
+                    "name": "comment.block.graalscript",
+                    "begin": "/\\*",
+                    "end": "\\*/",
+                    "patterns": [
+                        {
+                            "name": "comment.block.graalscript.leading-asterisk",
+                            "match": "^\\s*\\*.*$"
+                        }
+                    ]
+                }
+            ]
+        },
+        "sql-strings": {
+            "patterns": [
+                {
+                    "name": "string.quoted.double.sql.graalscript",
+                    "begin": "\"",
+                    "end": "\"",
+                    "patterns": [
+                        {
+                            "name": "keyword.other.sql.graalscript",
+                            "match": "\\b(SELECT|INSERT|UPDATE|DELETE|CREATE|TABLE|FROM|WHERE|VALUES|SET|INTO|AND|OR|NOT|NULL|IS|AS|ON|JOIN|LEFT|RIGHT|INNER|OUTER|GROUP|BY|ORDER|LIMIT|OFFSET|DISTINCT|COUNT|AVG|SUM|MIN|MAX|PRIMARY|KEY|DEFAULT|INT|TEXT|NOT)\\b"
+                        },
+                        {
+                            "name": "constant.character.escape.graalscript",
+                            "match": "\\\\."
+                        }
+                    ]
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.graalscript",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.graalscript",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.graalscript",
+                    "match": "\\b([0-9]+|0[xX][0-9a-fA-F]+)\\b"
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.graalscript",
+                    "match": "\\b(break|case|continue|default|do|else|elseif|for|if|in|return|switch|while|with)\\b"
+                },
+                {
+                    "name": "storage.type.graalscript",
+                    "match": "\\b(import)\\b"
+                },
+                {
+                    "name": "storage.modifier.graalscript",
+                    "match": "\\b(public|private|const|enum|function)\\b"
+                },
+                {
+                    "name": "keyword.other.graalscript",
+                    "match": "\\b(new|datablock)\\b"
+                },
+                {
+                    "name": "constant.language.graalscript",
+                    "match": "\\b(true|false|nil|null|NULL|pi|timevar2)\\b"
+                },
+                {
+                    "name": "variable.language.graalscript",
+                    "match": "\\b(this|thiso|temp|server|serverr|client|clientr|player|name)\\b"
+                }
+            ]
+        },
+        "functions": {
+            "patterns": [
+                {
+                    "name": "entity.name.function.graalscript",
+                    "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()"
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.graalscript",
+                    "match": "[-~^@/%|=+*!?&<>]"
+                },
+                {
+                    "name": "keyword.operator.array.graalscript",
+                    "match": "\\[|\\]"
+                },
+                { "name": "punctuation.graalscript", "match": "[{}();:,.]" }
+            ]
+        }
+    }
+}
