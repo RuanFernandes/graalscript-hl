@@ -1,11 +1,6 @@
 import * as vscode from 'vscode';
 
 function trySetGraalScript(doc: vscode.TextDocument) {
-    // Debug message
-    vscode.window.showInformationMessage(
-        `Initializing document: ${doc.fileName}`
-    );
-
     if (doc.fileName.endsWith('.txt')) {
         const text = doc.getText();
 
@@ -33,16 +28,8 @@ function trySetGraalScript(doc: vscode.TextDocument) {
             const matches = text.match(regex);
             if (matches) {
                 count += matches.length;
-                // Debug message for each keyword found
-                vscode.window.showInformationMessage(
-                    `Found ${matches.length} instances of '${kw}' in ${doc.fileName}`
-                );
             }
         }
-
-        vscode.window.showInformationMessage(
-            `GraalScript keyword count in ${doc.fileName}: ${count}`
-        );
 
         if (count > 4) {
             vscode.languages.setTextDocumentLanguage(doc, 'graalscript');
