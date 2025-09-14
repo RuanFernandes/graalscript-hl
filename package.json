@@ -1,4 +1,8 @@
 {
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/RuanFernandes/graalscript-hl"
+    },
     "name": "graalscript-hl",
     "displayName": "graalscript-hl",
     "description": "GraalScript2 Syntax Highlighter",
